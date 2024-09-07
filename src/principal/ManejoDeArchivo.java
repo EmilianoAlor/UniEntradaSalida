@@ -10,12 +10,11 @@ import java.util.Scanner;
 
 public class ManejoDeArchivo {
 	String nombre = ""; // = "caso01";
-	
-	public ManejoDeArchivo(String nombreArchivo)
-	{
+
+	public ManejoDeArchivo(String nombreArchivo) {
 		this.nombre = nombreArchivo;
 	}
-	
+
 //	double cantidad;
 
 //	@Override
@@ -41,23 +40,29 @@ public class ManejoDeArchivo {
 
 		try {
 			File file = new File("casos de prueba/in/" + this.nombre + ".in");
-			scanner = new Scanner(file);
-			// Especifica la configuración regional que se va a utilizar
-			scanner.useLocale(Locale.ENGLISH);
-			// Para la configuración regional de Argentina, utilizar:
-			// arch.useLocale(new Locale("es_AR"));
 
-			int cant = scanner.nextInt();
-			datos = new double[cant];
-			for (int i = 0; i < cant; i++) {
-				double n = scanner.nextDouble();
-				datos[i] = n;
+			if (file.exists()) {
+				scanner = new Scanner(file);
+				// Especifica la configuración regional que se va a utilizar
+				scanner.useLocale(Locale.ENGLISH);
+				// Para la configuración regional de Argentina, utilizar:
+				// arch.useLocale(new Locale("es_AR"));
+
+				int cant = scanner.nextInt();
+				datos = new double[cant];
+				for (int i = 0; i < cant; i++) {
+					double n = scanner.nextDouble();
+					datos[i] = n;
+				}
 			}
+			else
+				System.out.println("No se encontrol el archivo:"+this.nombre);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			// Cerrar el archivo, eso es mucho muy importante
-			scanner.close();
+			if (scanner != null)
+				scanner.close();
 		}
 		return datos;
 	}
@@ -77,7 +82,7 @@ public class ManejoDeArchivo {
 
 				for (int i = 0; i < datos.length; i++) {
 					// Imprime los datos y hace un salto de linea
-					printerWriter.println((int)datos[i]);
+					printerWriter.println((int) datos[i]);
 				}
 			}
 		} catch (Exception e) {
