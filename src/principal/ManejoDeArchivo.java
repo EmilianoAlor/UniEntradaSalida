@@ -9,7 +9,13 @@ import java.util.Locale;
 import java.util.Scanner;
 
 public class ManejoDeArchivo {
-	String nombre = "caso01"; // = "caso01";
+	String nombre = ""; // = "caso01";
+	
+	public ManejoDeArchivo(String nombreArchivo)
+	{
+		this.nombre = nombreArchivo;
+	}
+	
 //	double cantidad;
 
 //	@Override
@@ -71,7 +77,7 @@ public class ManejoDeArchivo {
 
 				for (int i = 0; i < datos.length; i++) {
 					// Imprime los datos y hace un salto de linea
-					printerWriter.println(datos[i]);
+					printerWriter.println((int)datos[i]);
 				}
 			}
 		} catch (Exception e) {

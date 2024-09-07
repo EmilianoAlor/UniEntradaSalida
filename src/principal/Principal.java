@@ -1,11 +1,21 @@
 package principal;
 
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class Principal {
 
 	public static void main(String[] args) {
-		ManejoDeArchivo lec = new ManejoDeArchivo();
+		
+		Scanner teclado = new Scanner(System.in);
+		
+		System.out.println("Ingrese el nombre del archivo sin su extencion:");
+		
+		String nombreArchivo = teclado.nextLine();
+		
+		teclado.close();
+		
+		ManejoDeArchivo lec = new ManejoDeArchivo(nombreArchivo);
 
 		double[] datos = lec.leerArchivo();
 		double[] resultado = null;
@@ -39,7 +49,7 @@ public class Principal {
 		}
 
 		lec.guardarArchivo(resultado);
-
+		System.out.println("Programa Terminado.c");
 	}
 
 }
